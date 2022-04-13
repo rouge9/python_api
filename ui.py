@@ -33,8 +33,14 @@ class Quiz_interface:
 
     def get_next_question(self):
         self.canvas.config(background="white")
-        self.q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question_text, text=self.q_text)
+        if self.quiz.still_has_questions():
+
+            self.q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.question_text, text=self.q_text)
+        else:
+            self.canvas.itemconfig(self.question_text,text="You have reached end of the question")
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
 
     def true_pressed(self):
         self.give_feedback(self.quiz.check_answer("True"))
