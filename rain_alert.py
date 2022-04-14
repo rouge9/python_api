@@ -22,7 +22,7 @@ for hour_data in weather_slice:
 
 if is_raining:
     url = "https://sms77io.p.rapidapi.com/sms"
-    payload = "to=%2B251941184014&p=34234c6337msh1accee1d67c1c19p1d376cjsndc86b1fb5320&text=bring%20an%20umbrella"
+    payload = f"to=%2B251941184014&p={os.environ['sms']}&text=bring%20an%20umbrella"
     headers = {
         "content-type": "application/x-www-form-urlencoded",
         "X-RapidAPI-Host": "sms77io.p.rapidapi.com",
