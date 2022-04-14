@@ -1,13 +1,12 @@
 import requests
 import os
 
-API_KEY = "2779aad3e7eee305265310a3a8b0a6d1"
-
+API_KEY = f"{os.environ['OWM_API']}"
 OWM_ENDPOINT = "https://api.openweathermap.org/data/2.5/onecall"
 parameters = {
     "lat": 7.012170,
     "lon": 39.973480,
-    "appid": "2779aad3e7eee305265310a3a8b0a6d1",
+    "appid": API_KEY,
     "exclude": "current,minutely,daily",
 }
 
