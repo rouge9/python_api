@@ -1,18 +1,19 @@
 import requests
+import os
 
-API_KEY = "2779aad3e7eee305265310a3a8b0a6d1"
+API_KEY = f"{os.environ['OWM_API']}"
 OWM_ENDPOINT = "https://api.openweathermap.org/data/2.5/onecall"
 parameters = {
-    "lat": 7.055090,
-    "lon": 38.493931,
-    "appid": "2779aad3e7eee305265310a3a8b0a6d1",
+    "lat": 7.012170,
+    "lon": 39.973480,
+    "appid": API_KEY,
     "exclude": "current,minutely,daily",
 }
 
 response = requests.get(OWM_ENDPOINT, params=parameters)
 response.raise_for_status()
 data = response.json()
-weather_slice = data["hourly"][:12]
+weather_slice = data["hourly"][:24]
 is_raining = False
 for hour_data in weather_slice:
     rain_data = hour_data["weather"][0]["id"]
@@ -25,7 +26,7 @@ if is_raining:
     headers = {
         "content-type": "application/x-www-form-urlencoded",
         "X-RapidAPI-Host": "sms77io.p.rapidapi.com",
-        "X-RapidAPI-Key": "34234c6337msh1accee1d67c1c19p1d376cjsndc86b1fb5320"
+        "X-RapidAPI-Key": f"{os.environ['sms']}",
     }
 
     response = requests.request("POST", url, data=payload, headers=headers)
