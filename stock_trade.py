@@ -6,7 +6,7 @@ import http
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
-API_KEY_FOR_NEWS = "f101d01a19e744738fa5fb1524107777"
+API_KEY_FOR_NEWS = os.environ.get("News_api")
 
 parameters = {
     "function": "TIME_SERIES_DAILY",
