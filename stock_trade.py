@@ -7,11 +7,12 @@ import http
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 API_KEY_FOR_NEWS = os.environ.get("News_api")
+Alpha_key = os.environ.get("ALPHA")
 
 parameters = {
     "function": "TIME_SERIES_DAILY",
     "symbol": STOCK,
-    "apikey": "0HNFCF3B2KIZZ4P8",
+    "apikey": Alpha_key,
 }
 ## STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
