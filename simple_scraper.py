@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-# import lxml
 import requests
 
 
@@ -17,10 +16,6 @@ for tag in article_title:
 
 article_upvote = [int(upvote.getText().split()[0]) for upvote in soup.find_all(name="span", class_="score")]
 
-
-# print(article_text)
-# print(article_link)
-# print(article_upvote)
 
 highest_vote = max(article_upvote)
 highest_index = article_upvote.index(highest_vote)
